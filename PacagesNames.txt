@@ -1,0 +1,6 @@
+npm i react-scroll
+npm i react-icons
+npm i aos (ainmations)
+
+npm install react-slick --save ( make Card Slider)
+npm install slick-carousel --save ( Card Slider css)
