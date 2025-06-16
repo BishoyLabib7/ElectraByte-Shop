@@ -127,3 +127,10 @@ body {
   --image-grayscale: 10%;
   --image-opacity: 90%;
 }
+
+.dark select option {
+  margin: 40px;
+  background: #18181bb7;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}

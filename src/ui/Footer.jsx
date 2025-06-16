@@ -5,7 +5,7 @@ import Information from "./Information";
 import ContactUs from "./ContactUs";
 function Footer() {
   return (
-    <div className="w-full flex flex-col items-center justify-center bg-gray-100">
+    <div className="w-full flex flex-col items-center justify-center bg-gary-100 ">
       <Companies />
       <Information />
       <ContactUs />

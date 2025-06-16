@@ -5,6 +5,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Cart from "./pages/cart";
 import AppLayout from "./ui/AppLayout";
 import Favorites from "./pages/Favorites";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

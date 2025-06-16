@@ -18,12 +18,14 @@ import { useEffect, useState } from "react";
 import Optionsbar from "./Optionsbar";
 import Sidebar from "./Sidebar";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 function Header() {
   const CartProducts = useSelector((state) => state.cart.products);
   const LovableProducts = useSelector((state) => state.love.products);
   const { theme } = useTheme();
+  const location = useLocation();
+
   useEffect(() => {
     Aos.init({ offset: 100, duration: 500, easing: "ease-in-out" });
     Aos.refresh();
@@ -33,12 +35,13 @@ function Header() {
   const toggleMenu = () => {
     setOpen(!open);
   };
-  const navItems = [
+  const navHomeItems = [
     { name: "Products", link: "products" },
     { name: "Services", link: "services" },
     { name: "Reviews", link: "reviews" },
     { name: "Contact", link: "contact" },
   ];
+  const navItems = [{ name: "Contact", link: "contact" }];
   return (
     <>
       {" "}
@@ -57,7 +60,7 @@ function Header() {
           <span>electrabyte@company.com</span>
         </h1>
       </div>
-      <div className="w-full  flex justify-between items-center gap-1 lg:px-16 px-4 lg:py-5 py-3 bg-gray-200 sticky top-0 z-50 shadow-2xl">
+      <div className="w-full  flex justify-between items-center gap-1 lg:px-16 px-4 lg:py-5 py-3 bg-gray-100 sticky top-0 z-50 shadow-2xl">
         <img
           src={theme === "dark" ? logoDark : logo}
           alt=""
@@ -65,24 +68,38 @@ function Header() {
         />
         <nav className="lg:flex hidden justify-center items-center gap-8">
           <NavLink
-            to={"/"}
+            to="/"
             className="text-gray-800 text-sm uppercase font-semibold cursor-pointer px-4 py-2  hover:text-white hover:bg-themepurple transition-all duration-300 rounded-lg dark:hover:bg-purple-400 hover:scale-110"
           >
             Home
           </NavLink>
-          {navItems.map(({ name, link }) => (
-            <Link
-              key={name}
-              to={link}
-              offset={-100}
-              smooth={true}
-              spy={true}
-              duration={500}
-              className="text-gray-800 text-sm uppercase font-semibold cursor-pointer px-4 py-2  hover:text-white hover:bg-themepurple transition-all duration-300 rounded-lg dark:hover:bg-purple-400 hover:scale-110"
-            >
-              {name}
-            </Link>
-          ))}
+          {location.pathname === "/"
+            ? navHomeItems.map(({ name, link }) => (
+                <Link
+                  key={`/${name}`}
+                  to={link}
+                  offset={-100}
+                  smooth={true}
+                  spy={true}
+                  duration={500}
+                  className="text-gray-800 text-sm uppercase font-semibold cursor-pointer px-4 py-2  hover:text-white hover:bg-themepurple transition-all duration-300 rounded-lg dark:hover:bg-purple-400 hover:scale-110"
+                >
+                  {name}
+                </Link>
+              ))
+            : navItems.map(({ name, link }) => (
+                <Link
+                  key={`/${name}`}
+                  to={link}
+                  offset={-100}
+                  smooth={true}
+                  spy={true}
+                  duration={500}
+                  className="text-gray-800 text-sm uppercase font-semibold cursor-pointer px-4 py-2  hover:text-white hover:bg-themepurple transition-all duration-300 rounded-lg dark:hover:bg-purple-400 hover:scale-110"
+                >
+                  {name}
+                </Link>
+              ))}
         </nav>
         <div className="lg:flex hidden justify-center items-center gap-6 text-black">
           <FaSearch className="text-gray-800 size-[20px] cursor-pointer hover:text-themepurpl dark:hover:text-purple-300 transition hover:scale-125" />

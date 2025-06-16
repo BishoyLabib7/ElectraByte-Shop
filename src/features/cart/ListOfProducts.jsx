@@ -6,11 +6,12 @@ import {
   increaseQuantity,
   decreaseQuantity,
 } from "../../services/useCart";
-import { IoIosHeartDislike } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 function ListOfProducts({ products }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     Aos.init({ offset: 100, duration: 500, easing: "ease-in-out" });
     Aos.refresh();
@@ -123,7 +124,7 @@ function ListOfProducts({ products }) {
         </div>
         <button
           className="bg-blue-800 hover:bg-blue-700 cursor-pointer text-white font-semibold py-3 px-8 rounded-lg shadow transition-all text-lg"
-          onClick={() => alert("Proceeding to payment...")}
+          onClick={() => navigate("/checkout")}
         >
           Proceed to Payment
         </button>
