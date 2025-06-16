@@ -83,15 +83,19 @@ function ListOfProducts({ products }) {
                 <td className="px-4 py-3 text-center text-gray-900 font-semibold">
                   <div className="flex items-center gap-2 justify-center">
                     <button
-                      className="bg-gray-200 text-gray-800 px-2 py-1 rounded hover:bg-gray-300 transition"
+                      className={`bg-gray-200 ${
+                        product.quantity <= 1 ? "opacity-20" : "cursor-pointer"
+                      } text-gray-800 px-2 py-1 rounded hover:bg-gray-300 transition`}
                       onClick={() => handleDecrease(product.id)}
                       aria-label="Decrease quantity"
+                      disabled={product.quantity <= 1}
                     >
                       -
                     </button>
+
                     <span>{product.quantity || 1}</span>
                     <button
-                      className="bg-gray-200 text-gray-800 px-2 py-1 rounded hover:bg-gray-300 transition"
+                      className="bg-gray-200 text-gray-800 px-2 py-1 rounded hover:bg-gray-300 transition cursor-pointer"
                       onClick={() => handleIncrease(product.id)}
                       aria-label="Increase quantity"
                     >
@@ -118,7 +122,7 @@ function ListOfProducts({ products }) {
           Total: <span className="text-blue-600">${total.toFixed(2)}</span>
         </div>
         <button
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow transition-all text-lg"
+          className="bg-blue-800 hover:bg-blue-700 cursor-pointer text-white font-semibold py-3 px-8 rounded-lg shadow transition-all text-lg"
           onClick={() => alert("Proceeding to payment...")}
         >
           Proceed to Payment
