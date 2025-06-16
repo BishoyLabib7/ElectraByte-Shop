@@ -58,7 +58,7 @@ function Companies() {
     <div
       data-aos="zoom-in"
       data-aos-delay="100"
-      className="w-full bg-themepurple lg:px-20 px-3 py-10 m-auto"
+      className="w-full bg-themepurple lg:px-20 px-3 py-5 m-auto"
     >
       <Slider className="w-full" {...settings}>
         <div>

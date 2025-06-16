@@ -1,7 +1,7 @@
 import Aos from "aos";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { removeCartProduct } from "../../services/useCart";
+import { removeloveProduct } from "../../services/useLove";
 import { IoIosHeartDislike } from "react-icons/io";
 
 function ListOfProducts({ products }) {
@@ -13,7 +13,7 @@ function ListOfProducts({ products }) {
 
   // Add handler for delete
   const handleDelete = (id) => {
-    dispatch(removeCartProduct(id));
+    dispatch(removeloveProduct(id));
   };
 
   return (
