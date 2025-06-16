@@ -18,11 +18,13 @@ import { useEffect, useState } from "react";
 import Optionsbar from "./Optionsbar";
 import Sidebar from "./Sidebar";
 import { useSelector } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import Popup from "../features/homePage/Popup";
 
 function Header() {
   const CartProducts = useSelector((state) => state.cart.products);
   const LovableProducts = useSelector((state) => state.love.products);
+  const user = useSelector((state) => state.user.user);
   const { theme } = useTheme();
   const location = useLocation();
 
@@ -32,9 +34,19 @@ function Header() {
   }, []);
 
   const [open, setOpen] = useState(false);
+  const [Auth, setAuth] = useState(false);
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setOpen(!open);
   };
+  function handleAuth(path) {
+    if (user.valid) {
+      navigate(path);
+      return;
+    }
+    setAuth((Auth) => !Auth);
+    return;
+  }
   const navHomeItems = [
     { name: "Products", link: "products" },
     { name: "Services", link: "services" },
@@ -103,27 +115,25 @@ function Header() {
         </nav>
         <div className="lg:flex hidden justify-center items-center gap-6 text-black">
           <FaSearch className="text-gray-800 size-[20px] cursor-pointer hover:text-themepurpl dark:hover:text-purple-300 transition hover:scale-125" />
-          <NavLink to={"/favorites"}>
-            <div className="relative">
-              <FaHeart className="text-gray-800 size-[20px] cursor-pointer  dark:hover:text-purple-300 hover:text-themepurple transition hover:scale-125" />
-              {LovableProducts.length > 0 && (
-                <div className="bg-purple-700  hover:bg-themeyellow hover:text-black text-white px-2 py-1 absolute top-[-15px] right-[-15px] text-[10px] font-bold rounded-full">
-                  {LovableProducts.length}
-                </div>
-              )}
-            </div>
-          </NavLink>
           <IoPerson className="text-gray-800 size-[20px] cursor-pointer hover:text-themepurple dark:hover:text-purple-300 transition hover:scale-125" />
-          <NavLink to={"/cart"}>
-            <div className="relative">
-              <FaShoppingCart className="text-gray-800 size-[20px] cursor-pointer  dark:hover:text-purple-300 hover:text-themepurple transition hover:scale-125" />
-              {CartProducts.length > 0 && (
-                <div className="bg-purple-700  hover:bg-themeyellow hover:text-black text-white px-2 py-1 absolute top-[-15px] right-[-15px] text-[10px] font-bold rounded-full">
-                  {CartProducts.length}
-                </div>
-              )}
-            </div>
-          </NavLink>
+
+          <div className="relative" onClick={() => handleAuth("/favorites")}>
+            <FaHeart className="text-gray-800 size-[20px] cursor-pointer  dark:hover:text-purple-300 hover:text-themepurple transition hover:scale-125" />
+            {LovableProducts.length > 0 && (
+              <div className="bg-purple-700  hover:bg-themeyellow hover:text-black text-white px-2 py-1 absolute top-[-15px] right-[-15px] text-[10px] font-bold rounded-full">
+                {LovableProducts.length}
+              </div>
+            )}
+          </div>
+
+          <div className="relative" onClick={() => handleAuth("/cart")}>
+            <FaShoppingCart className="text-gray-800 size-[20px] cursor-pointer  dark:hover:text-purple-300 hover:text-themepurple transition hover:scale-125" />
+            {CartProducts.length > 0 && (
+              <div className="bg-purple-700  hover:bg-themeyellow hover:text-black text-white px-2 py-1 absolute top-[-15px] right-[-15px] text-[10px] font-bold rounded-full">
+                {CartProducts.length}
+              </div>
+            )}
+          </div>
 
           <ThemeToggle />
         </div>
@@ -141,6 +151,7 @@ function Header() {
         </div>
       </div>
       <Optionsbar />
+      {Auth && <Popup orderPopup={Auth} setOrderPopup={setAuth} />}
     </>
   );
 }
