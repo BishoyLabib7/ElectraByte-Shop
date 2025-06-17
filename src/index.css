@@ -17,6 +17,14 @@ hr {
   display: none;
 }
 
+@media screen and (max-width: 640px) {
+  #icon-box {
+    display: none !important;
+  }
+  #icons {
+    display: flex !important;
+  }
+}
 #product-box:hover {
   #icons {
     display: flex !important;

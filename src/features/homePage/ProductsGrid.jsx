@@ -6,12 +6,12 @@ import Starts from "../../ui/Starts";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartProduct } from "../../services/useCart";
 import { addLoveProduct } from "../../services/useLove";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ProductsGrid({ setAuth }) {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
 
   function handelAddCart(e, item) {
@@ -33,11 +33,11 @@ function ProductsGrid({ setAuth }) {
     }
   }
 
-  function handelSee(e) {
+  function handelSee(e, product) {
     if (user.name) {
       e.stopPropagation();
       e.preventDefault();
-      // navigate();
+      navigate("/card", { state: { id: product.id } });
     } else {
       setAuth((auth) => !auth);
     }
@@ -83,7 +83,7 @@ function ProductsGrid({ setAuth }) {
               className="flex flex-row gap-3 justify-center items-center absolute top-[15px]"
             >
               <div
-                onClick={(e) => handelSee(e, item.id)}
+                onClick={(e) => handelSee(e, item)}
                 className="bg-themepurple hover:bg-themeyellow hover:text-black text-white rounded-full p-3 "
               >
                 <MdOutlineRemoveRedEye />

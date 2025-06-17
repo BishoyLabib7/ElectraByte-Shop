@@ -43,6 +43,7 @@ function Category() {
           <div
             data-aos="zoom-in"
             data-aos-delay="100"
+            key={category.name}
             className="flex flex-col justify-center items-center gap-6 cursor-pointer "
           >
             <img

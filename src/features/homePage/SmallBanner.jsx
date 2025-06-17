@@ -37,6 +37,7 @@ function SmallBanner() {
         <div
           data-aos="zoom-in"
           data-aos-delay="100"
+          key={banner.name}
           className="bg-cover bg-center p-10 rounded-lg flex flex-col justify-center items-end gap-6"
           style={{ backgroundImage: `url(${banner.image})` }}
         >

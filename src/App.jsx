@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 
 import Home from "./pages/Home";
+import Card from "./pages/Card";
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Cart = lazy(() => import("./pages/cart"));
 const AppLayout = lazy(() => import("./ui/AppLayout"));
@@ -19,6 +20,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/card" element={<Card />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

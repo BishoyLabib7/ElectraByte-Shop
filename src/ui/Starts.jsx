@@ -7,8 +7,8 @@ function Starts({ rate, postion = "start" }) {
   }
   return (
     <div className={`flex justify-${postion} items-center gap-1`}>
-      {element.map((el) => (
-        <FaStar className={`text-${el}`} />
+      {element.map((el, index) => (
+        <FaStar className={`text-${el}`} key={index} />
       ))}
     </div>
   );

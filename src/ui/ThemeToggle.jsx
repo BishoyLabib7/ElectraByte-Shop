@@ -11,7 +11,7 @@ const ThemeToggle = () => {
   return (
     <div
       onClick={toggleTheme}
-      aria-label="Toggle dark mode"
+      aria-label="Toggle dark mode py-1"
       style={{ marginLeft: 12 }}
     >
       {theme === "dark" ? (

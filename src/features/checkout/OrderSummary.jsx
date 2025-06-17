@@ -39,7 +39,7 @@ function OrderSummary({ products }) {
       <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
       <div>
         {products.map((product, idx) => (
-          <>
+          <div key={product.id}>
             <div
               key={idx}
               className="flex items-center justify-between py-2 gap-2"
@@ -93,7 +93,7 @@ function OrderSummary({ products }) {
               </div>
             </div>
             <hr />
-          </>
+          </div>
         ))}{" "}
       </div>
       <div className="flex justify-between items-center mt-6 text-lg font-bold">

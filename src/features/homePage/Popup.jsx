@@ -4,6 +4,7 @@ import { register } from "../../services/useUser";
 import { useEffect, useState } from "react";
 import InputeForm from "../../ui/InputeForm";
 import Aos from "aos";
+import { FaArrowUp } from "react-icons/fa";
 
 const Popup = ({ orderPopup, setOrderPopup }) => {
   const dispatch = useDispatch();
@@ -11,11 +12,16 @@ const Popup = ({ orderPopup, setOrderPopup }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   useEffect(() => {
     Aos.init({ offset: 100, duration: 500, easing: "ease-in-out" });
     Aos.refresh();
   }, []);
   function handleRegister() {
+    if (!name || !email || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
     setOrderPopup(false);
     const userData = {
       name: name,
@@ -23,6 +29,7 @@ const Popup = ({ orderPopup, setOrderPopup }) => {
       password: password,
       valid: true,
     };
+
     dispatch(register(userData));
   }
   return (
@@ -67,8 +74,11 @@ const Popup = ({ orderPopup, setOrderPopup }) => {
                   className={"mb-10"}
                   type={"password"}
                 />
-
-                <div className="flex justify-center">
+                <span className=" text-sm  text-red-600 font-semibold">
+                  {error ? error : ""}
+                </span>
+                <div className="flex  items-center justify-center mt-5">
+                  {" "}
                   <button
                     onClick={handleRegister}
                     className="w-[80%] bg-themepurple from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-5 rounded-lg font-semibold"

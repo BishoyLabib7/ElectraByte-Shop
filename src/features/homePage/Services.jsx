@@ -39,6 +39,7 @@ function Services() {
         <div
           data-aos="zoom-in"
           data-aos-delay="100"
+          key={service.name}
           className="flex flex-col justify-center items-center gap-3"
         >
           <img

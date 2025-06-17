@@ -114,8 +114,6 @@ function Header() {
               ))}
         </nav>
         <div className="lg:flex hidden justify-center items-center gap-6 text-black">
-          <FaSearch className="text-gray-800 size-[20px] cursor-pointer hover:text-themepurpl dark:hover:text-purple-300 transition hover:scale-125" />
-
           <div className="relative" onClick={() => handleAuth("/favorites")}>
             <FaHeart className="text-gray-800 size-[20px] cursor-pointer dark:hover:text-purple-300 hover:text-themepurple transition hover:scale-125" />
             {LovableProducts.length > 0 && (
