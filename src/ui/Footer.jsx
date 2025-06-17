@@ -11,7 +11,7 @@ function Footer() {
       <ContactUs />
       <div
         id="icon-box"
-        className="fixed  bg-themepurple text-white p-3 rounded-full hover:bg-themepurple hover:text-black cursor-pointer bottom-6  right-6"
+        className="fixed  bg-themepurple text-white p-3 rounded-full hover:bg-themeyellow hover:text-black cursor-pointer bottom-6  right-6"
       >
         <Link to="home" spy={true} offset={-100} smooth={true}>
           <FaArrowUp className="size-[25px]" />
