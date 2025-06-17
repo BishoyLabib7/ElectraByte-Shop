@@ -46,6 +46,7 @@ function Category() {
             className="flex flex-col justify-center items-center gap-6 cursor-pointer "
           >
             <img
+              loading="lazy"
               src={category.image}
               alt={`${category} category`}
               className=" rounded-full transition-all duration-300 hover:scale-110"

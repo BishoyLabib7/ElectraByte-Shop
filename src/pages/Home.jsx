@@ -1,17 +1,18 @@
-import SmallBanner from "../features/homePage/SmallBanner";
-import BigBanner from "../features/homePage/BigBanner";
-import Category from "../features/homePage/Category";
-import Hero from "../features/homePage/Hero";
-import ProductsGrid from "../features/homePage/ProductsGrid";
-import Reviews from "../features/homePage/Reviews";
-import Services from "../features/homePage/Services";
 import { products } from "../data/export";
 import { reviewdata } from "../data/export";
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setProducts } from "../services/useProducts";
 import { setReviews } from "../services/useReview";
-import Popup from "../features/homePage/Popup";
+
+import Hero from "../features/homePage/Hero";
+const SmallBanner = lazy(() => import("../features/homePage/SmallBanner"));
+const BigBanner = lazy(() => import("../features/homePage/BigBanner"));
+const Category = lazy(() => import("../features/homePage/Category"));
+const ProductsGrid = lazy(() => import("../features/homePage/ProductsGrid"));
+const Reviews = lazy(() => import("../features/homePage/Reviews"));
+const Services = lazy(() => import("../features/homePage/Services"));
+const Popup = lazy(() => import("../features/homePage/Popup"));
 
 function Home() {
   const [Auth, setAuth] = useState(false);

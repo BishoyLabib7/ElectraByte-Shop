@@ -102,7 +102,7 @@ function ProductsGrid({ setAuth }) {
               </div>
             </div>
 
-            <img src={item.img} alt="" />
+            <img loading="lazy" src={item.img} alt="" />
 
             <h4 className="text-lg text-gray-400 font-semibold">
               {item.category}

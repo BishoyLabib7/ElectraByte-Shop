@@ -41,7 +41,12 @@ function Services() {
           data-aos-delay="100"
           className="flex flex-col justify-center items-center gap-3"
         >
-          <img src={service.image} alt="" className="w-[60px] mb-[20px]" />
+          <img
+            loading="lazy"
+            src={service.image}
+            alt=""
+            className="w-[60px] mb-[20px]"
+          />
           <h3 className="font-semibold text-xl">{service.name}</h3>
           <p className="text-[17px] text-gray-500">{service.description}</p>
         </div>

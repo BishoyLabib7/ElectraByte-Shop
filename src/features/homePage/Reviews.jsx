@@ -80,6 +80,7 @@ function Reviews() {
               className="w-full lg:p-10 px-3 flex flex-col justify-center gap-3 items-center "
             >
               <img
+                loading="lazy"
                 src={review.img}
                 alt=""
                 className="rounded-full w-[100px] m-auto"
