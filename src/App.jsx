@@ -6,7 +6,7 @@ import Card from "./pages/Card";
 import Cart from "./pages/Cart";
 import Favorites from "./pages/Favorites";
 import Checkout from "./pages/Checkout";
-import AppLayout from "./components/AppLayout";
+import AppLayout from "./ui/AppLayout";
 import NotFound from "./pages/NotFound";
 
 function App() {
