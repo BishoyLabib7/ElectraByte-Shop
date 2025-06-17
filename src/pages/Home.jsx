@@ -7,12 +7,14 @@ import Reviews from "../features/homePage/Reviews";
 import Services from "../features/homePage/Services";
 import { products } from "../data/export";
 import { reviewdata } from "../data/export";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setProducts } from "../services/useProducts";
 import { setReviews } from "../services/useReview";
+import Popup from "../features/homePage/Popup";
 
 function Home() {
+  const [Auth, setAuth] = useState(false);
   const dispation = useDispatch();
   useEffect(() => {
     dispation(setProducts(products));
@@ -25,9 +27,10 @@ function Home() {
       <Category />
       <SmallBanner />
       <Services />
-      <ProductsGrid />
+      <ProductsGrid setAuth={setAuth} />
       <BigBanner />
       <Reviews />
+      {Auth && <Popup orderPopup={Auth} setOrderPopup={setAuth} />}
     </>
   );
 }

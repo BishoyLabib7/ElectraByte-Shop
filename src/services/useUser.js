@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: [],
+  user: {},
 };
 const useUser = createSlice({
   name: "user",
   initialState,
   reducers: {
     register: (state, action) => {
-      state.products = action.payload;
+      state.user = action.payload;
     },
     login: (state, action) => {
       const email = state.user.find(
@@ -23,7 +23,7 @@ const useUser = createSlice({
       }
     },
     logout: (state) => {
-      state.user = [];
+      state.user = {};
     },
   },
 });

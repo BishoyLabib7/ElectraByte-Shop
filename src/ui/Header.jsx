@@ -115,10 +115,9 @@ function Header() {
         </nav>
         <div className="lg:flex hidden justify-center items-center gap-6 text-black">
           <FaSearch className="text-gray-800 size-[20px] cursor-pointer hover:text-themepurpl dark:hover:text-purple-300 transition hover:scale-125" />
-          <IoPerson className="text-gray-800 size-[20px] cursor-pointer hover:text-themepurple dark:hover:text-purple-300 transition hover:scale-125" />
 
           <div className="relative" onClick={() => handleAuth("/favorites")}>
-            <FaHeart className="text-gray-800 size-[20px] cursor-pointer  dark:hover:text-purple-300 hover:text-themepurple transition hover:scale-125" />
+            <FaHeart className="text-gray-800 size-[20px] cursor-pointer dark:hover:text-purple-300 hover:text-themepurple transition hover:scale-125" />
             {LovableProducts.length > 0 && (
               <div className="bg-purple-700  hover:bg-themeyellow hover:text-black text-white px-2 py-1 absolute top-[-15px] right-[-15px] text-[10px] font-bold rounded-full">
                 {LovableProducts.length}
@@ -132,6 +131,17 @@ function Header() {
               <div className="bg-purple-700  hover:bg-themeyellow hover:text-black text-white px-2 py-1 absolute top-[-15px] right-[-15px] text-[10px] font-bold rounded-full">
                 {CartProducts.length}
               </div>
+            )}
+          </div>
+          <div
+            onClick={() => handleAuth("/")}
+            className="flex justify-center items-center gap-1 bg-themepurple py-1 px-2 rounded-full transition hover:scale-105"
+          >
+            <IoPerson className="text-[#fff] size-[20px] cursor-pointer hover:text-themepurple dark:hover:text-purple-300 " />
+            {user?.name && (
+              <span className="text-[#fff]  font-semibold">
+                {user?.name.split(" ")[0]}
+              </span>
             )}
           </div>
 
