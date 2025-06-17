@@ -1,14 +1,13 @@
-import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 
 import Home from "./pages/Home";
 import Card from "./pages/Card";
-const NotFound = lazy(() => import("./pages/NotFound"));
-const Cart = lazy(() => import("./pages/cart"));
-const AppLayout = lazy(() => import("./ui/AppLayout"));
-const Favorites = lazy(() => import("./pages/Favorites"));
-const Checkout = lazy(() => import("./pages/Checkout"));
+import Cart from "./pages/Cart";
+import Favorites from "./pages/Favorites";
+import Checkout from "./pages/Checkout";
+import AppLayout from "./components/AppLayout";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
