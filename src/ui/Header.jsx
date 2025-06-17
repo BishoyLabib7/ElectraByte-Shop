@@ -2,12 +2,7 @@ import ThemeToggle from "./ThemeToggle";
 import logo from "../assets/electraLogo.png";
 import logoDark from "../assets/electraLogo-dark.png";
 import { useTheme } from "../context/ThemeContext";
-import {
-  FaSearch,
-  FaHeart,
-  FaShoppingCart,
-  FaMapMarkedAlt,
-} from "react-icons/fa";
+import { FaHeart, FaShoppingCart, FaMapMarkedAlt } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
 import { FaXmark, FaBars, FaPhoneVolume } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
@@ -56,7 +51,6 @@ function Header() {
   const navItems = [{ name: "Contact", link: "contact" }];
   return (
     <>
-      {" "}
       {open && <Sidebar close={toggleMenu} />}
       <div className="w-full lg:flex hidden justify-between items-center lg:px-16 px-5 py-2 bg-themeyellow">
         <h1 className="text-sm text-black font-semibold flex justify-center items-center gap-2">
@@ -158,7 +152,7 @@ function Header() {
           </div>{" "}
         </div>
       </div>
-      <Optionsbar />
+      <Optionsbar setAuth={setAuth} />
       {Auth && <Popup orderPopup={Auth} setOrderPopup={setAuth} />}
     </>
   );

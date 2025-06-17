@@ -3,15 +3,16 @@ import { useTheme } from "../context/ThemeContext";
 
 import logo from "../assets/electraLogo.png";
 import logoDark from "../assets/electraLogo-dark.png";
+import { NavLink } from "react-router-dom";
 function Sidebar({ close }) {
   const { theme } = useTheme();
-  const navItems = [
-    { name: "Home", link: "home" },
+  const navHomeItems = [
     { name: "Products", link: "products" },
     { name: "Services", link: "services" },
     { name: "Reviews", link: "reviews" },
     { name: "Contact", link: "contact" },
   ];
+  const navItems = [{ name: "Contact", link: "contact" }];
   return (
     <div
       data-aos="fade-right"
@@ -24,20 +25,42 @@ function Sidebar({ close }) {
         className="w-[200px]"
       />
       <nav className="flex flex-col justify-start items-start gap-8 mt-8">
-        {navItems.map(({ name, link }) => (
-          <Link
-            key={name}
-            to={link}
-            offset={-100}
-            smooth={true}
-            spy={true}
-            onClick={close}
-            duration={500}
-            className="text-gray-800 text-sm uppercase font-semibold cursor-pointer px-4 py-2  hover:text-white hover:bg-themepurple transition-all duration-300 rounded-lg dark:hover:bg-purple-400 hover:scale-110"
-          >
-            {name}
-          </Link>
-        ))}
+        {" "}
+        <NavLink
+          to="/"
+          className="text-gray-800 text-sm uppercase font-semibold cursor-pointer px-4 py-2  hover:text-white hover:bg-themepurple transition-all duration-300 rounded-lg dark:hover:bg-purple-400 hover:scale-110"
+        >
+          Home
+        </NavLink>
+        {location.pathname === "/"
+          ? navHomeItems.map(({ name, link }) => (
+              <Link
+                key={`/${name}`}
+                to={link}
+                offset={-100}
+                smooth={true}
+                spy={true}
+                onClick={close}
+                duration={500}
+                className="text-gray-800 text-sm uppercase font-semibold cursor-pointer px-4 py-2  hover:text-white hover:bg-themepurple transition-all duration-300 rounded-lg dark:hover:bg-purple-400 hover:scale-110"
+              >
+                {name}
+              </Link>
+            ))
+          : navItems.map(({ name, link }) => (
+              <Link
+                key={`/${name}`}
+                to={link}
+                offset={-100}
+                smooth={true}
+                spy={true}
+                onClick={close}
+                duration={500}
+                className="text-gray-800 text-sm uppercase font-semibold cursor-pointer px-4 py-2  hover:text-white hover:bg-themepurple transition-all duration-300 rounded-lg dark:hover:bg-purple-400 hover:scale-110"
+              >
+                {name}
+              </Link>
+            ))}
       </nav>
     </div>
   );

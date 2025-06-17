@@ -1,13 +1,12 @@
-import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
 import ThemeToggle from "./ThemeToggle";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useState } from "react";
-function Optionsbar() {
-  const [Auth, setAuth] = useState(false);
+function Optionsbar({ setAuth }) {
   const user = useSelector((state) => state.user.user);
   const navigate = useNavigate();
+
   function handleAuth(path) {
     if (user.valid) {
       navigate(path);
@@ -16,8 +15,10 @@ function Optionsbar() {
     setAuth((Auth) => !Auth);
     return;
   }
+
   const CartProducts = useSelector((state) => state.cart.products);
   const LovableProducts = useSelector((state) => state.love.products);
+
   return (
     <div className="w-full  lg:hidden flex justify-center items-center gap-1 px-4 py-3 bg-gray-200 fixed top-[94dvh] z-50 shadow-2xl rounded-t-full">
       <div className="flex justify-around items-start gap-6 text-black">
